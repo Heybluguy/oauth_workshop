@@ -15,5 +15,7 @@ class SessionsController < ApplicationController
     token = response_hash["token"]
 
     oauth_response = Faraday.get("https://api.github.com/user?access_token=#{token}")
+
+    auth = JSON.parse(oauth_response.body)
   end
 end
